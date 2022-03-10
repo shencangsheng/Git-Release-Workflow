@@ -4,10 +4,14 @@
 
 生成Git ChangeLog的工具，包含在GitLab CI/CD中生成并推送Release工作流以及GitHub Action的推送Release工作流
 
+[DockerHub Repositorie](https://hub.docker.com/r/shencangsheng/gitlab-pipeline-release)
+
 - [Git Release Workflow](#git-release-workflow)
   - [尝试使用](#尝试使用)
     - [Gitlab CI/CD 推送Release](#gitlab-cicd-推送release)
     - [GitHub Action 推送Release](#github-action-推送release)
+  - [Credits](#credits)
+  - [License](#license)
 
 ## 尝试使用
 ### Gitlab CI/CD 推送Release
@@ -67,3 +71,12 @@ jobs:
           prerelease: false
           body_path: CHANGELOG.md
 ```
+
+## Credits
+This repo is incubated by the [shencangsheng/GitLab-Release-Workflow](https://github.com/shencangsheng/GitLab-Release-Workflow) available in the GitHub Repo.
+This repo was inspired by the [zitsen/release-workflow-demo](https://github.com/zitsen/release-workflow-demo) available in the GitHub Repo.
+
+## License
+A short snippet describing the license (MIT)
+
+MIT © Cangsheng Shen

@@ -4,10 +4,14 @@ English | [中文说明](./i18n/README.zh-cn.md)
 
 Tools for generating Git ChangeLogs, including generating and pushing Release workflows in GitLab CI/CD and GitHub Action's Push Release workflows
 
+[DockerHub Repositorie](https://hub.docker.com/r/shencangsheng/gitlab-pipeline-release)
+
 - [Git Release Workflow](#git-release-workflow)
   - [How to use for your](#how-to-use-for-your)
     - [Gitlab CI/CD Push Release](#gitlab-cicd-push-release)
     - [GitHub Action Push Release](#github-action-push-release)
+  - [Credits](#credits)
+  - [License](#license)
 
 ## How to use for your
 ### Gitlab CI/CD Push Release
@@ -67,3 +71,12 @@ jobs:
           prerelease: false
           body_path: CHANGELOG.md
 ```
+
+## Credits
+This repo is incubated by the [shencangsheng/GitLab-Release-Workflow](https://github.com/shencangsheng/GitLab-Release-Workflow) available in the GitHub Repo.
+This repo was inspired by the [zitsen/release-workflow-demo](https://github.com/zitsen/release-workflow-demo) available in the GitHub Repo.
+
+## License
+A short snippet describing the license (MIT)
+
+MIT © Cangsheng Shen
