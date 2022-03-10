@@ -1,0 +1,19 @@
+on:
+  label:
+    types: [created]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+      - name: Create Release
+        run: |
+        bash post-github-release.sh
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./changelog-echo.sh
+          asset_name: changelog-echo.sh
+          asset_content_type: application/
