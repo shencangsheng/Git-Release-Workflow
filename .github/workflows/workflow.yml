@@ -17,8 +17,8 @@ jobs:
           path: |
             changelog-echo.sh
             CHANGELOG.md
-jobs_2:
   release:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download the artifact
