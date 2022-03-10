@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -xve
+
 last=$(git describe --tags --abbrev=0 2>/dev/null)
 
 if [ "$last" = "" ]; then
