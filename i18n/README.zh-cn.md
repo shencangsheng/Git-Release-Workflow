@@ -4,6 +4,11 @@
 
 生成Git ChangeLog的工具，包含在GitLab CI/CD中生成并推送Release工作流以及GitHub Action的推送Release工作流
 
+- [Git Release Workflow](#git-release-workflow)
+  - [尝试使用](#尝试使用)
+    - [Gitlab CI/CD 推送Release](#gitlab-cicd-推送release)
+    - [GitHub Action 推送Release](#github-action-推送release)
+
 ## 尝试使用
 ### Gitlab CI/CD 推送Release
 ```yml
@@ -20,3 +25,45 @@ release:
     - post-gitlab-release-14x
 ```
 
+### GitHub Action 推送Release
+```yml
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create Release
+        run: |
+          curl -fsSL -o changelog-echo.sh `wget -qO- -t1 -T2 "https://api.github.com/repos/shencangsheng/Git-Release-Workflow/releases/latest" | grep "browser_download_url" | grep 'changelog-echo.sh"' | head -n 1 | awk -F ': "' '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'`
+          bash changelog-echo.sh >CHANGELOG.md
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact
+          path: |
+            CHANGELOG.md
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: artifact
+          path: ./
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+          body_path: CHANGELOG.md
+```
