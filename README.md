@@ -1,6 +1,6 @@
 # Git Release Workflow
 
-English | [中文说明](./i18n/README.zh-cn.md)
+English | [简体中文](./i18n/README.zh-cn.md)
 
 Tools for generating Git ChangeLogs, including generating and pushing Release workflows in GitLab CI/CD and GitHub Action's Push Release workflows
 

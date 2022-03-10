@@ -1,6 +1,6 @@
 # Git Release Workflow
 
-[English](https://github.com/shencangsheng/Git-Release-Workflow) | 中文说明
+[English](https://github.com/shencangsheng/Git-Release-Workflow) | 简体中文
 
 生成Git ChangeLog的工具，包含在GitLab CI/CD中生成并推送Release工作流以及GitHub Action的推送Release工作流
 
