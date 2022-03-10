@@ -1,0 +1,5 @@
+.project
+.idea
+*.settings
+*.iml
+.DS_Store
