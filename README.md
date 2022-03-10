@@ -21,7 +21,7 @@ release:
     - if: '$CI_COMMIT_TAG != null && $CI_PIPELINE_SOURCE == "push"'
       when: on_success
   stage: release-note
-  image: shencangsheng/gitlab-release:latest
+  image: shencangsheng/gitlab-pipeline-release:latest
   script:
     # Pay attention to distinguish the GitLab version
     # <= 13.x use post-gitlab-release-13x
