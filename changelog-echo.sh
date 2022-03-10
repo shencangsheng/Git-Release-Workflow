@@ -1,14 +1,14 @@
 #!/bin/bash
 
-echo "# $ACTION_CIMMIT_TAG - "$(date "+%Y-%m-%d")""
+echo "# $GITHUB_REF_NAME - "$(date "+%Y-%m-%d")""
 
 git tag >tags.tmp
-before_tag=$(cat tags.tmp | grep -B 1 $last_tag | head -n 1)
+before_tag=$(cat tags.tmp | grep -B 1 $GITHUB_REF_NAME | head -n 1)
 
 range_tag=""
 
-if [ ! $before_tag = ${ACTION_CIMMIT_TAG} ]; then
-    range_tag="$1...${CI_COMMIT_TAG}"
+if [ ! $before_tag = ${GITHUB_REF_NAME} ]; then
+    range_tag="$1...${GITHUB_REF_NAME}"
 fi
 
 git log --pretty=format:'%s' $range_tag | sort -k2n | uniq >./releaseNotes.tmp

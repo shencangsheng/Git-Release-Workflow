@@ -8,8 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Create Release
-        env:
-          ACTION_CIMMIT_TAG: ${{ github.ref }}
         run: |
           bash changelog-echo.sh >CHANGELOG.md
       - name: Archive code coverage results
