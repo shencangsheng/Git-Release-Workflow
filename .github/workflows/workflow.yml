@@ -4,6 +4,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    steps:
       - name: Create Release
         run: |
         bash post-github-release.sh
