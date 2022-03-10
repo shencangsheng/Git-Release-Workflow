@@ -8,13 +8,13 @@ Tools for generating Git ChangeLogs, including generating and pushing Release wo
 
 - [Git Release Workflow](#git-release-workflow)
   - [How to use for your](#how-to-use-for-your)
-    - [Gitlab CI/CD Push Release](#gitlab-cicd-push-release)
+    - [GitLab CI/CD Push Release](#gitlab-cicd-push-release)
     - [GitHub Action Push Release](#github-action-push-release)
   - [Credits](#credits)
   - [License](#license)
 
 ## How to use for your
-### Gitlab CI/CD Push Release
+### GitLab CI/CD Push Release
 ```yml
 release:
   rules:

@@ -8,13 +8,13 @@
 
 - [Git Release Workflow](#git-release-workflow)
   - [尝试使用](#尝试使用)
-    - [Gitlab CI/CD 推送Release](#gitlab-cicd-推送release)
+    - [GitLab CI/CD 推送Release](#gitlab-cicd-推送release)
     - [GitHub Action 推送Release](#github-action-推送release)
   - [Credits](#credits)
   - [License](#license)
 
 ## 尝试使用
-### Gitlab CI/CD 推送Release
+### GitLab CI/CD 推送Release
 ```yml
 release:
   rules:
