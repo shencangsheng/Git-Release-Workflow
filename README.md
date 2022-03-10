@@ -73,9 +73,9 @@ jobs:
 ```
 
 ## Credits
-This repo is incubated by the [shencangsheng/GitLab-Release-Workflow](https://github.com/shencangsheng/GitLab-Release-Workflow) available in the GitHub Repo.
+This project is incubated by the [shencangsheng/GitLab-Release-Workflow](https://github.com/shencangsheng/GitLab-Release-Workflow) available in the GitHub project.
 
-This repo was inspired by the [zitsen/release-workflow-demo](https://github.com/zitsen/release-workflow-demo) available in the GitHub Repo.
+This project was inspired by the [zitsen/release-workflow-demo](https://github.com/zitsen/release-workflow-demo) available in the GitHub project.
 
 ## License
 A short snippet describing the license (MIT)
