@@ -1,16 +1,17 @@
 #!/bin/bash
 
-set -xve
+echo "# $ACTION_CIMMIT_TAG - "$(date "+%Y-%m-%d")""
 
-last=$(git describe --tags --abbrev=0 2>/dev/null)
+git tag >tags.tmp
+before_tag=$(cat tags.tmp | grep -B 1 $last_tag | head -n 1)
 
-if [ "$last" = "" ]; then
-    git log --pretty=format:'%s' | sort -k2n | uniq >./releaseNotes.tmp
-    echo '# '"$(git remote -v | head -n1 | awk '{print $2}' | sed 's/.*\///' | sed 's/\.git//')" "- $(date "+%Y-%m-%d")"
-else
-    git log --pretty=format:'%s' $last..HEAD | sort -k2n | uniq >./releaseNotes.tmp
-    echo "# $last - "$(date "+%Y-%m-%d")""
+range_tag=""
+
+if [ ! $before_tag = ${ACTION_CIMMIT_TAG} ]; then
+    range_tag="$1...${CI_COMMIT_TAG}"
 fi
+
+git log --pretty=format:'%s' $range_tag | sort -k2n | uniq >./releaseNotes.tmp
 
 echo ""
 
@@ -37,4 +38,5 @@ part "Styles" "style"
 part "Others" "other"
 part "Perfs" "perf"
 
-# rm -f ./releaseNotes.tmp
+rm -f ./releaseNotes.tmp
+rm -f ./tags.tmp
