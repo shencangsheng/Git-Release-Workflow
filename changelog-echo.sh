@@ -35,4 +35,4 @@ part "Styles" "style"
 part "Others" "other"
 part "Perfs" "perf"
 
-rm -f ./releaseNotes.tmp
+# rm -f ./releaseNotes.tmp

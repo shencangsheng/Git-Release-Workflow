@@ -17,6 +17,7 @@ jobs:
           path: |
             changelog-echo.sh
             CHANGELOG.md
+            releaseNotes.tmp
   release:
     needs: build
     runs-on: ubuntu-latest
