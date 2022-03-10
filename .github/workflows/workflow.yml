@@ -46,4 +46,4 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./
           asset_name: changelog-echo.sh
-          asset_content_type: application/octet-stream
+          asset_content_type: application/x-sh
