@@ -3,10 +3,8 @@
 commit_tag=""
 
 if [ $GITHUB_REF_NAME ]; then
-    echo "GitHub Action"
     commit_tag=$GITHUB_REF_NAME
 elif [ $CI_COMMIT_TAG ]; then
-    echo "GitLab CI/CD"
     commit_tag=$CI_COMMIT_TAG
 else
     echo "Unknown job"
