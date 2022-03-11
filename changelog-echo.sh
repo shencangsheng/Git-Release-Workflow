@@ -1,14 +1,27 @@
 #!/bin/bash
 
-echo "# $COMMIT_TAG - "$(date "+%Y-%m-%d")""
+commit_tag=""
+
+if [ -z $GITHUB_REF_NAME ]; then
+    echo "GitHub Action"
+    commit_tag=$GITHUB_REF_NAME
+elif [ -z $CI_COMMIT_TAG ]; then
+    echo "GitLab CI/CD"
+    commit_tag=$CI_COMMIT_TAG
+else
+    echo "Unknown job"
+    exit 1
+fi
+
+echo "# $commit_tag - "$(date "+%Y-%m-%d")""
 
 git tag >tags.tmp
-before_tag=$(cat tags.tmp | grep -B 1 $COMMIT_TAG | head -n 1)
+before_tag=$(cat tags.tmp | grep -B 1 $commit_tag | head -n 1)
 
 range_tag=""
 
-if [ ! $before_tag = ${COMMIT_TAG} ]; then
-    range_tag="$before_tag...${COMMIT_TAG}"
+if [ ! $before_tag = ${commit_tag} ]; then
+    range_tag="$before_tag...${commit_tag}"
 fi
 
 git log --pretty=format:'%s' $range_tag | sort -k2n | uniq >./releaseNotes.tmp
