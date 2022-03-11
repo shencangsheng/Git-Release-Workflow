@@ -15,6 +15,10 @@
 
 ## 尝试使用
 ### GitLab CI/CD 推送Release
+
+GitLab Release 需要的 login-action 选项包括：
+* PRIVATE-TOKEN：这是您的 GitLab 仓库的访问令牌。 我们需要将 GitLab 访问令牌存储在项目的CI/CD变量，命名为`ACCESS_TOKEN`，使它们不会公开在工作流程文件中， 更多信息请参阅[创建和使用GitLab访问令牌](https://docs.gitlab.cn/jh/user/profile/personal_access_tokens.html)。
+
 ```yml
 release:
   rules:
