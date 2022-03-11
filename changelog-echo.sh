@@ -2,10 +2,10 @@
 
 commit_tag=""
 
-if [ -z $GITHUB_REF_NAME ]; then
+if [ $GITHUB_REF_NAME ]; then
     echo "GitHub Action"
     commit_tag=$GITHUB_REF_NAME
-elif [ -z $CI_COMMIT_TAG ]; then
+elif [ $CI_COMMIT_TAG ]; then
     echo "GitLab CI/CD"
     commit_tag=$CI_COMMIT_TAG
 else
