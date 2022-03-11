@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Create Release
         env: 
-          COMMIT_TAG: ${{ github.ref }}
+          COMMIT_TAG: ${{ env.GITHUB_REF_NAME }}
         run: |
           bash changelog-echo.sh >CHANGELOG.md
       - name: Archive code coverage results
