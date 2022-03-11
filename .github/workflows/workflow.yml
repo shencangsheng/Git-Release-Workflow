@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Create Release
-      - env: 
+        env: 
           COMMIT_TAG: ${{ GITHUB_REF_NAME }}
         run: |
           bash changelog-echo.sh >CHANGELOG.md
