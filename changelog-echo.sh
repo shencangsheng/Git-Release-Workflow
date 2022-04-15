@@ -13,7 +13,7 @@ fi
 
 echo "# $commit_tag - "$(date "+%Y-%m-%d")""
 
-git tag >tags.tmp
+git tag --sort=creatordate >tags.tmp
 before_tag=$(cat tags.tmp | grep -B 1 $commit_tag | head -n 1)
 
 range_tag=""
