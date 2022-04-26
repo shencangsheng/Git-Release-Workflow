@@ -42,6 +42,7 @@ on:
   push:
     tags:
       - "[0-9]+.*"
+      - "v*"
 jobs:
   build:
     runs-on: ubuntu-latest
