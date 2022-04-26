@@ -14,10 +14,12 @@ Tools for generating Git ChangeLogs, including generating and pushing Release wo
   - [License](#license)
 
 ## How to use for your
+
 ### GitLab CI/CD Push Release
 
 The login-action options required by GitLab Release include:
-* PRIVATE-TOKEN：This is the access token for your GitLab repository. We need to store the GitLab access tokens in the project's CI/CD variable, named `ACCESS_TOKEN`, so that they are not exposed in the workflow file, see [Creating and Using GitLab Access Tokens](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) for more information
+
+- PRIVATE-TOKEN：This is the access token for your GitLab repository. We need to store the GitLab access tokens in the project's CI/CD variable, named `ACCESS_TOKEN`, so that they are not exposed in the workflow file, see [Creating and Using GitLab Access Tokens](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) for more information
 
 ```yml
 release:
@@ -34,11 +36,12 @@ release:
 ```
 
 ### GitHub Action Push Release
+
 ```yml
 on:
   push:
     tags:
-      - v*
+      - "[0-9]+.*"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -77,11 +80,13 @@ jobs:
 ```
 
 ## Credits
+
 This project is incubated by the [shencangsheng/GitLab-Release-Workflow](https://github.com/shencangsheng/GitLab-Release-Workflow) available in the GitHub project.
 
 This project was inspired by the [zitsen/release-workflow-demo](https://github.com/zitsen/release-workflow-demo) available in the GitHub project.
 
 ## License
+
 A short snippet describing the license (MIT)
 
 MIT © Cangsheng Shen

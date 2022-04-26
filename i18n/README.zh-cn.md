@@ -2,22 +2,24 @@
 
 [English](https://github.com/shencangsheng/Git-Release-Workflow) | 简体中文
 
-生成Git ChangeLog的工具，包含在GitLab CI/CD中生成并推送Release工作流以及GitHub Action的推送Release工作流
+生成 Git ChangeLog 的工具，包含在 GitLab CI/CD 中生成并推送 Release 工作流以及 GitHub Action 的推送 Release 工作流
 
 [DockerHub Repositorie](https://hub.docker.com/r/shencangsheng/gitlab-pipeline-release)
 
 - [Git Release Workflow](#git-release-workflow)
   - [尝试使用](#尝试使用)
-    - [GitLab CI/CD 推送Release](#gitlab-cicd-推送release)
-    - [GitHub Action 推送Release](#github-action-推送release)
+    - [GitLab CI/CD 推送 Release](#gitlab-cicd-推送-release)
+    - [GitHub Action 推送 Release](#github-action-推送-release)
   - [Credits](#credits)
   - [License](#license)
 
 ## 尝试使用
-### GitLab CI/CD 推送Release
+
+### GitLab CI/CD 推送 Release
 
 GitLab Release 需要的 login-action 选项包括：
-* PRIVATE-TOKEN：这是您的 GitLab 仓库的访问令牌。 我们需要将 GitLab 访问令牌存储在项目的CI/CD变量，命名为`ACCESS_TOKEN`，使它们不会公开在工作流程文件中， 更多信息请参阅[创建和使用GitLab访问令牌](https://docs.gitlab.cn/jh/user/profile/personal_access_tokens.html)。
+
+- PRIVATE-TOKEN：这是您的 GitLab 仓库的访问令牌。 我们需要将 GitLab 访问令牌存储在项目的 CI/CD 变量，命名为`ACCESS_TOKEN`，使它们不会公开在工作流程文件中， 更多信息请参阅[创建和使用 GitLab 访问令牌](https://docs.gitlab.cn/jh/user/profile/personal_access_tokens.html)。
 
 ```yml
 release:
@@ -33,12 +35,13 @@ release:
     - post-gitlab-release-14x
 ```
 
-### GitHub Action 推送Release
+### GitHub Action 推送 Release
+
 ```yml
 on:
   push:
     tags:
-      - v*
+      - "[0-9]+.*"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -77,11 +80,13 @@ jobs:
 ```
 
 ## Credits
+
 This project is incubated by the [shencangsheng/GitLab-Release-Workflow](https://github.com/shencangsheng/GitLab-Release-Workflow) available in the GitHub project.
 
 This project was inspired by the [zitsen/release-workflow-demo](https://github.com/zitsen/release-workflow-demo) available in the GitHub project.
 
 ## License
+
 A short snippet describing the license (MIT)
 
 MIT © Cangsheng Shen
