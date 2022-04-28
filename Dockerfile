@@ -17,6 +17,7 @@ COPY changelog-echo.sh /usr/local/bin/changelog-echo
 COPY changelog-generate.sh /usr/local/bin/changelog-generate
 COPY post-gitlab-release-13.sh /usr/local/bin/post-gitlab-release-13x
 COPY post-gitlab-release-14.sh /usr/local/bin/post-gitlab-release-14x
+COPY post-gitlab-release-links-14.sh /usr/local/bin/post-gitlab-release-links-14x
 
 RUN chmod -R 755 /usr/local/bin/*
 
