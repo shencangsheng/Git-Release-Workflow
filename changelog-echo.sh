@@ -29,7 +29,7 @@ echo ""
 function part() {
     name=$1
     pattern=$2
-    changes=$(grep -E "^$pattern" releaseNotes.tmp | sed -E "s/($pattern): //g" | sort | uniq | awk '{print NR". "$0}')
+    changes=$(grep -E "^($pattern)" releaseNotes.tmp | sed -E "s/($pattern): //g" | sort | uniq | awk '{print NR". "$0}')
     lines=$(printf "\\$changes\n" | wc -l)
     if [ $lines -gt 0 ]; then
         echo "### $name"
