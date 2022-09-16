@@ -29,6 +29,8 @@ while getopts "n:p:u:t:h" opt; do
     esac
 done
 
+set -u
+
 curl --request POST "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/releases/${CI_COMMIT_TAG}/assets/links" \
     --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}" \
     --data name="${name}" \
