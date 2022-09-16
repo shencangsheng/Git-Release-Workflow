@@ -33,6 +33,22 @@ release:
     # <= 13.x use post-gitlab-release-13x
     # >= 14.x use post-gitlab-release-14x
     - post-gitlab-release-14x
+
+generic:
+  rules:
+    - if: '$CI_COMMIT_TAG != null && $CI_PIPELINE_SOURCE == "push"'
+      when: on_success
+  stage: generic
+  image: shencangsheng/gitlab-pipeline-release:latest
+  script:
+    - tar -czf dist.tar.gz dist
+    - tar -czf docs.tar.gz docs
+    - post-gitlab-release-generic-14x ./dist.tar.gz dist.tar.gz
+    - post-gitlab-release-generic-14x ./docs.tar.gz docs.tar.gz
+    - post-gitlab-release-links-14x -n dist -u "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/release/${CI_COMMIT_TAG}/dist.tar.gz" -t package
+    - post-gitlab-release-links-14x -n docs -u "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/release/${CI_COMMIT_TAG}/docs.tar.gz" -t runbook
+  dependencies:
+    - build
 ```
 
 ### GitHub Action Push Release
