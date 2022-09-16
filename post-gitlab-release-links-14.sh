@@ -6,7 +6,7 @@ name=
 url=
 link_type="other"
 
-while getopts "n:p:u:t:h" opt; do
+while getopts "n:u:t:h" opt; do
     case $opt in
     n)
         name=$OPTARG
@@ -35,4 +35,4 @@ curl --request POST "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/releases/${CI_CO
     --header "PRIVATE-TOKEN: ${ACCESS_TOKEN}" \
     --data name="${name}" \
     --data url="${url}" \
-    --data type="${type}"
+    --data link_type="${link_type}"
