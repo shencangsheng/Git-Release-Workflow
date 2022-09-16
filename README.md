@@ -22,6 +22,11 @@ The login-action options required by GitLab Release include:
 - PRIVATE-TOKEN：This is the access token for your GitLab repository. We need to store the GitLab access tokens in the project's CI/CD variable, named `ACCESS_TOKEN`, so that they are not exposed in the workflow file, see [Creating and Using GitLab Access Tokens](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) for more information
 
 ```yml
+stages:
+  - release-note
+  - build
+  - generic
+
 release:
   rules:
     - if: '$CI_COMMIT_TAG != null && $CI_PIPELINE_SOURCE == "push"'

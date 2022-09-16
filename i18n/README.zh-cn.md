@@ -22,6 +22,11 @@ GitLab Release 需要的 login-action 选项包括：
 - PRIVATE-TOKEN：这是您的 GitLab 仓库的访问令牌。 我们需要将 GitLab 访问令牌存储在项目的 CI/CD 变量，命名为`ACCESS_TOKEN`，使它们不会公开在工作流程文件中， 更多信息请参阅[创建和使用 GitLab 访问令牌](https://docs.gitlab.cn/jh/user/profile/personal_access_tokens.html)。
 
 ```yml
+stages:
+  - release-note
+  - build
+  - generic
+
 release:
   rules:
     - if: '$CI_COMMIT_TAG != null && $CI_PIPELINE_SOURCE == "push"'
@@ -33,6 +38,22 @@ release:
     # <= 13.x 使用 post-gitlab-release-13x
     # >= 14.x 使用 post-gitlab-release-14x
     - post-gitlab-release-14x
+
+generic:
+  rules:
+    - if: '$CI_COMMIT_TAG != null && $CI_PIPELINE_SOURCE == "push"'
+      when: on_success
+  stage: generic
+  image: shencangsheng/gitlab-pipeline-release:latest
+  script:
+    - tar -czf dist.tar.gz dist
+    - tar -czf docs.tar.gz docs
+    - post-gitlab-release-generic-14x ./dist.tar.gz dist.tar.gz
+    - post-gitlab-release-generic-14x ./docs.tar.gz docs.tar.gz
+    - post-gitlab-release-links-14x -n dist -u "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/release/${CI_COMMIT_TAG}/dist.tar.gz" -t package
+    - post-gitlab-release-links-14x -n docs -u "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/release/${CI_COMMIT_TAG}/docs.tar.gz" -t runbook
+  dependencies:
+    - build
 ```
 
 ### GitHub Action 推送 Release
